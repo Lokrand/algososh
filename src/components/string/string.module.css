@@ -1,0 +1,15 @@
+.input {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.circles {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  justify-content: center;
+}
