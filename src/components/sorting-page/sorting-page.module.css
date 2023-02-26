@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 50px;
+  align-items: center;
+}
+
+.header__radioInputs {
+  display: flex;
+  flex-direction: row;
+  column-gap: 30px;
+}
+
+.header__sortButtons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+}
