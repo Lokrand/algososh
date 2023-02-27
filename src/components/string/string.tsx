@@ -1,57 +1,96 @@
 import React, { useState } from "react";
+import styles from "./string.module.css";
+import { SolutionLayout } from "../ui/solution-layout/solution-layout";
+import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
-import { Input } from "../ui/input/input";
-import { SolutionLayout } from "../ui/solution-layout/solution-layout";
-import styles from "./string.module.css";
+import { ElementStates } from "../../types/element-states";
 
 export const StringComponent: React.FC = () => {
   const [value, setValue] = useState("");
-  const [active, setActive] = useState(false);
-  const [isLoader, setIsLoader] = useState(false);
+  const [arr, setArr] = useState<string[]>([]);
+  const [isSorted, setIsSorted] = useState(false);
+  const [start, setStart] = useState(-1);
+  const [end, setEnd] = useState(12);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const sortString = (string: string) => {
-    setIsLoader(true);
-    setActive(true);
-    const result = [];
-    for (let i = 0; i < string.length; i++) {
-      for (let j = string.length - 1; j > 0; j--) {
-        // setTimeout(() => {
-          
-        // }, 1000);
-      }
+  const reverse = async (str: string) => {
+    setIsLoading(true);
+    setIsSorted(false);
+    setStart(-1);
+    setEnd(12);
+    const splitStr = str.split("");
+    setArr(splitStr);
+    let start = 0;
+    let end: number;
+    str.length % 2 === 0 ? (end = splitStr.length) : (end = splitStr.length - 1);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    setStart(start);
+    str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
+
+    while (str.length % 2 === 0? start < end : start <= end) {
+      setArr(splitStr);
+      setStart(start);
+      str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      str.length % 2 === 0
+        ? ([splitStr[start], splitStr[end - 1]] = [splitStr[end - 1], splitStr[start]])
+        : ([splitStr[start], splitStr[end]] = [splitStr[end], splitStr[start]]);
+      start++;
+      end--;
+     setValue(splitStr.join(""));
     }
-
-    setTimeout(() => {
-      setIsLoader(false);
-    }, string.length*1000)
+    setIsSorted(true);
+    setIsLoading(false);
   };
 
-  console.log(value);
   return (
     <SolutionLayout title="Строка">
-      <div className={styles.input}>
-        <Input
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          maxLength={11}
-          isLimitText
-        />
+      <div className={styles.header}>
+        <Input maxLength={11} isLimitText={true} onChange={(e) => setValue(e.currentTarget.value)}/>
         <Button
-          onClick={() => {
-            sortString(value);
-          }}
+          isLoader={isLoading}
           text="Развернуть"
-          isLoader={isLoader}
+          onClick={() => {
+            reverse(value);
+          }}
+          style={{minWidth: '178px'}}
+          disabled={value === ""}
         />
       </div>
-      {active && (
-        <div className={styles.circles}>
-          {value.split("").map((el, index) => {
-            return <Circle key={index} letter={el} />;
+      <div className={styles.circles}>
+        {isSorted &&
+          arr.map((letter, i) => {
+            return (
+              <Circle key={i} letter={letter} state={ElementStates.Modified} />
+            );
           })}
-        </div>
-      )}
+        {!isSorted &&
+          arr.map((el, index) => {
+            if (index === start || index === end) {
+              return (
+                <Circle
+                  key={index}
+                  letter={el}
+                  state={ElementStates.Changing}
+                />
+              );
+            }
+            if (index < start || index > end) {
+              return (
+                <Circle
+                  key={index}
+                  letter={el}
+                  state={ElementStates.Modified}
+                />
+              );
+            } else if (index > start || index < end) {
+              return (
+                <Circle key={index} letter={el} state={ElementStates.Default} />
+              );
+            }
+          })}
+      </div>
     </SolutionLayout>
   );
 };
