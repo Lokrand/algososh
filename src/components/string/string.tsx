@@ -23,22 +23,27 @@ export const StringComponent: React.FC = () => {
     setArr(splitStr);
     let start = 0;
     let end: number;
-    str.length % 2 === 0 ? (end = splitStr.length) : (end = splitStr.length - 1);
+    str.length % 2 === 0
+      ? (end = splitStr.length)
+      : (end = splitStr.length - 1);
     await new Promise((resolve) => setTimeout(resolve, 500));
     setStart(start);
     str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
 
-    while (str.length % 2 === 0? start < end : start <= end) {
+    while (str.length % 2 === 0 ? start < end : start <= end) {
       setArr(splitStr);
       setStart(start);
       str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
       await new Promise((resolve) => setTimeout(resolve, 1500));
       str.length % 2 === 0
-        ? ([splitStr[start], splitStr[end - 1]] = [splitStr[end - 1], splitStr[start]])
+        ? ([splitStr[start], splitStr[end - 1]] = [
+            splitStr[end - 1],
+            splitStr[start],
+          ])
         : ([splitStr[start], splitStr[end]] = [splitStr[end], splitStr[start]]);
       start++;
       end--;
-     setValue(splitStr.join(""));
+      setValue(splitStr.join(""));
     }
     setIsSorted(true);
     setIsLoading(false);
@@ -47,14 +52,18 @@ export const StringComponent: React.FC = () => {
   return (
     <SolutionLayout title="Строка">
       <div className={styles.header}>
-        <Input maxLength={11} isLimitText={true} onChange={(e) => setValue(e.currentTarget.value)}/>
+        <Input
+          maxLength={11}
+          isLimitText={true}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        />
         <Button
           isLoader={isLoading}
           text="Развернуть"
           onClick={() => {
             reverse(value);
           }}
-          style={{minWidth: '178px'}}
+          style={{ minWidth: "178px" }}
           disabled={value === ""}
         />
       </div>
