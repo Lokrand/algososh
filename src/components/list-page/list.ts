@@ -1,4 +1,4 @@
-export class N<T> {
+class N<T> {
   value: T;
   next: N<T> | null;
   constructor(value: T, next?: N<T> | null) {
