@@ -7,7 +7,7 @@ class N<T> {
   }
 }
 
-export interface IList<T> {
+interface IList<T> {
   append: (element: T) => void;
   prepend: (element: T) => void;
   addElByIndex: (element: T, position: number) => void;

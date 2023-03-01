@@ -1,4 +1,4 @@
-export interface IStack<T> {
+interface IStack<T> {
   clear: () => void;
   pop: () => void;
   getSize: () => number;
