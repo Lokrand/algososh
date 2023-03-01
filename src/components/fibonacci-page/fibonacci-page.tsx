@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from "./fibonacci-page.module.css";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { delay } from "../../utils/delay";
 
-export const FibonacciPage: React.FC = () => {
+export const FibonacciPage: FC = () => {
   const [arr, setArr] = useState<number[]>([]);
   const [value, setValue] = useState(1);
   const [active, setActive] = useState(false);
@@ -15,13 +16,13 @@ export const FibonacciPage: React.FC = () => {
   const generateFibArr = async (n: number) => {
     setActive(true);
     setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setArr([1]);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setArr([1, 1]);
     let fib: number[] = [1, 1];
     for (let i = 2; i < n + 1; i++) {
-      await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+      await delay(SHORT_DELAY_IN_MS);
       fib[i] = fib[i - 2] + fib[i - 1];
       setArr((arr) => [...arr, fib[i]]);
     }

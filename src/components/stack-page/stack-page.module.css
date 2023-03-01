@@ -1,16 +1,16 @@
 .header {
+  max-width: 840px;
   display: flex;
   flex-direction: row;
   column-gap: 12px;
   margin: 0 auto;
-  max-width: 840px;
 }
 
 .stack {
+  max-width: 950px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   column-gap: 16px;
   margin: 48px auto;
-  max-width: 950px;
 }

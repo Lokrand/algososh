@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import { useState, FC } from "react";
 import styles from "./string.module.css";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
+import { DELAY_IN_MS, SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { delay } from "../../utils/delay";
 
-export const StringComponent: React.FC = () => {
+export const StringComponent: FC = () => {
   const [value, setValue] = useState("");
   const [arr, setArr] = useState<string[]>([]);
   const [isSorted, setIsSorted] = useState(false);
@@ -26,7 +28,7 @@ export const StringComponent: React.FC = () => {
     str.length % 2 === 0
       ? (end = splitStr.length)
       : (end = splitStr.length - 1);
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await delay(SHORT_DELAY_IN_MS);
     setStart(start);
     str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
 
@@ -34,7 +36,7 @@ export const StringComponent: React.FC = () => {
       setArr(splitStr);
       setStart(start);
       str.length % 2 === 0 ? setEnd(end - 1) : setEnd(end);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await delay(DELAY_IN_MS);
       str.length % 2 === 0
         ? ([splitStr[start], splitStr[end - 1]] = [
             splitStr[end - 1],

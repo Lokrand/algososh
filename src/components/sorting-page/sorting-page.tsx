@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { Button } from "../ui/button/button";
 import { Column } from "../ui/column/column";
 import { RadioInput } from "../ui/radio-input/radio-input";
@@ -7,17 +7,10 @@ import styles from "./sorting-page.module.css";
 import { ElementStates } from "../../types/element-states";
 import { Direction } from "../../types/direction";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { randomArr } from "../../utils/ramdomArr";
+import { delay } from "../../utils/delay";
 
-const randomArr = () => {
-  const result: number[] = [];
-  const resultLength = Math.floor(Math.random() * 18);
-  for (let i = 0; i < (resultLength > 3 ? resultLength : 3); i++) {
-    result.push(Math.floor(Math.random() * 101));
-  }
-  return result;
-};
-
-export const SortingPage: React.FC = () => {
+export const SortingPage: FC = () => {
   const [array, setArr] = useState<number[] | []>([]);
   const [sorted, setSorted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +36,7 @@ export const SortingPage: React.FC = () => {
     setLeft(-2);
     setRight(-2);
     setCounter(18);
-    setArr(randomArr());
+    setArr(randomArr(18, false));
   };
 
   const selectIncreaceSort = async (arr: number[]) => {
@@ -54,9 +47,7 @@ export const SortingPage: React.FC = () => {
       min = i;
       for (let j = i; j < arr.length; j++) {
         if (arr[min] > arr[j]) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, SHORT_DELAY_IN_MS)
-          );
+          await delay(SHORT_DELAY_IN_MS);
           [arr[j], arr[min]] = [arr[min], arr[j]];
           const arrSorted = [...arr];
           setArr(arrSorted);
@@ -79,9 +70,7 @@ export const SortingPage: React.FC = () => {
       min = i;
       for (let j = i; j < arr.length; j++) {
         if (arr[min] < arr[j]) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, SHORT_DELAY_IN_MS)
-          );
+          await delay(SHORT_DELAY_IN_MS);
           [arr[j], arr[min]] = [arr[min], arr[j]];
           const arrSorted = [...arr];
           setArr(arrSorted);
@@ -104,9 +93,7 @@ export const SortingPage: React.FC = () => {
       elSorted--;
       for (let j = 0; j < arr.length - 1 - i; j++) {
         if (arr[j] > arr[j + 1]) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, SHORT_DELAY_IN_MS)
-          );
+          await delay(SHORT_DELAY_IN_MS);
           [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
           const arrSorted = [...arr];
           setArr(arrSorted);
@@ -129,9 +116,7 @@ export const SortingPage: React.FC = () => {
       elSorted--;
       for (let j = 0; j < arr.length - 1 - i; j++) {
         if (arr[j] < arr[j + 1]) {
-          await new Promise((resolve) =>
-            setTimeout(resolve, SHORT_DELAY_IN_MS)
-          );
+          await delay(SHORT_DELAY_IN_MS);
           [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
           const arrSorted = [...arr];
           setArr(arrSorted);
@@ -191,7 +176,7 @@ export const SortingPage: React.FC = () => {
           }}
         />
         <Button
-          disabled={isLoading ? true : false}
+          disabled={isLoading}
           onClick={generateArr}
           text="Новый массив"
           style={{ minWidth: "170px" }}

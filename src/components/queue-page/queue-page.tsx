@@ -7,6 +7,7 @@ import { Queue } from "./queue";
 import { Circle } from "../ui/circle/circle";
 import { ElementStates } from "../../types/element-states";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { delay } from "../../utils/delay";
 
 export const QueuePage: FC = () => {
   const ref = useRef<Queue<string>>();
@@ -27,25 +28,25 @@ export const QueuePage: FC = () => {
 
   const changeBorderColor = async () => {
     setBorderColor(ElementStates.Changing);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setBorderColor(ElementStates.Default);
   };
 
   const enqueue = async () => {
     changeBorderColor();
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setBorderColorOnTail(ElementStates.Changing);
     ref.current?.enqueue(value);
     setValue("");
     setQueue(ref.current?.elements);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setBorderColorOnTail(ElementStates.Default);
     setBorderColorOnHead(ElementStates.Default);
   };
 
   const dequeue = async () => {
     setBorderColorOnHead(ElementStates.Changing);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     ref.current?.dequeue();
     if (ref.current) {
       const newQueue = [...ref.current.elements];

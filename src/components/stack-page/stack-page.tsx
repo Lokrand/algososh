@@ -7,6 +7,7 @@ import { Input } from "../ui/input/input";
 import { Circle } from "../ui/circle/circle";
 import { Stack } from "./stack";
 import { ElementStates } from "../../types/element-states";
+import { delay } from "../../utils/delay";
 
 export const StackPage: FC = () => {
   const ref = useRef<Stack<string>>();
@@ -27,7 +28,7 @@ export const StackPage: FC = () => {
     ref.current?.push(value);
     setValue("");
     setStack(ref.current?.container);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     setIsAddEl(false);
     setBorderColor(ElementStates.Default);
   };
@@ -35,7 +36,7 @@ export const StackPage: FC = () => {
   const pop = async () => {
     setBorderColor(ElementStates.Changing);
     setRemoved(true);
-    await new Promise((resolve) => setTimeout(resolve, SHORT_DELAY_IN_MS));
+    await delay(SHORT_DELAY_IN_MS);
     ref.current?.pop();
     setBorderColor(ElementStates.Default);
     setRemoved(false);
