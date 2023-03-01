@@ -36,6 +36,7 @@ export const FibonacciPage: FC = () => {
           min={1}
           max={19}
           type={"number"}
+          value={value}
           onChange={(e) => setValue(+e.currentTarget.value)}
           isLimitText={true}
           disabled={isLoading}

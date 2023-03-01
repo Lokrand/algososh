@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button } from "../ui/button/button";
 import { Column } from "../ui/column/column";
 import { RadioInput } from "../ui/radio-input/radio-input";
@@ -21,6 +21,10 @@ export const SortingPage: FC = () => {
   const [decButActive, setDecBtnActive] = useState(false);
   const [selection, setSelection] = useState(false);
   const [bubble, setBubble] = useState(false);
+
+  useEffect(() => {
+    setArr(randomArr(18, false));
+  }, []);
 
   const handleSelectClick = () => {
     setSelection(true);

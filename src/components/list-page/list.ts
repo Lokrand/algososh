@@ -1,7 +1,7 @@
-class N<T> {
+class Node<T> {
   value: T;
-  next: N<T> | null;
-  constructor(value: T, next?: N<T> | null) {
+  next: Node<T> | null;
+  constructor(value: T, next?: Node<T> | null) {
     this.value = value;
     this.next = next === undefined ? null : next;
   }
@@ -19,9 +19,9 @@ interface IList<T> {
 }
 
 export class List<T> implements IList<T> {
-  private tail: N<T> | null;
+  private tail: Node<T> | null;
   private size: number;
-  private head: N<T> | null;
+  private head: Node<T> | null;
   constructor() {
     this.head = null;
     this.tail = null;
@@ -29,11 +29,11 @@ export class List<T> implements IList<T> {
   }
 
   addElByIndex(el: T, index: number) {
-    const n = new N(el);
-    let previousNode: any;
-    if (+index === 0) {
-      n.next = this.head;
-      this.head = n;
+    const node = new Node<T>(el);
+    let previousNode: Node<T> | null = null;
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
     } else {
       let curr = this.head;
       let currIndex = 0;
@@ -42,8 +42,8 @@ export class List<T> implements IList<T> {
         previousNode = curr;
         curr = curr.next;
       }
-      n.next = curr;
-      previousNode.next = n;
+      node.next = curr;
+      if (previousNode) previousNode.next = node;
     }
 
     this.size++;
@@ -67,7 +67,7 @@ export class List<T> implements IList<T> {
   }
 
   prepend(element: T) {
-    const node = new N(element, this.head);
+    const node = new Node(element, this.head);
     this.head = node;
     if (!this.tail) {
       this.tail = node;
@@ -85,7 +85,7 @@ export class List<T> implements IList<T> {
   }
 
   append(value: T) {
-    const node = new N(value);
+    const node = new Node(value);
     if (!this.head || !this.tail) {
       this.size++;
       this.head = node;
@@ -126,9 +126,8 @@ export class List<T> implements IList<T> {
     }
     return nodes;
   }
-  
+
   getSize() {
     return this.size;
   }
-
 }
