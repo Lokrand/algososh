@@ -4,7 +4,6 @@ import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from "./fibonacci-page.module.css";
-import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { delay } from "../../utils/delay";
 
 export const FibonacciPage: FC = () => {
@@ -16,13 +15,13 @@ export const FibonacciPage: FC = () => {
   const generateFibArr = async (n: number) => {
     setActive(true);
     setIsLoading(true);
-    await delay(SHORT_DELAY_IN_MS);
+    await delay();
     setArr([1]);
-    await delay(SHORT_DELAY_IN_MS);
+    await delay();
     setArr([1, 1]);
     let fib: number[] = [1, 1];
     for (let i = 2; i < n + 1; i++) {
-      await delay(SHORT_DELAY_IN_MS);
+      await delay();
       fib[i] = fib[i - 2] + fib[i - 1];
       setArr((arr) => [...arr, fib[i]]);
     }
