@@ -22,7 +22,7 @@ export const MainPage: FC<MainPageProps> = ({ extraClass = "" }) => {
         </p>
       </div>
       <div className={styles.cards_box}>
-        <Link className={styles.link} to="/recursion">
+        <Link className={styles.link} to="/recursion" id="linkToString">
           <div className={`${styles.card} ${styles.string}`} />
         </Link>
         <Link className={styles.link} to="/fibonacci">

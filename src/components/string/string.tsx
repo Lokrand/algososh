@@ -60,6 +60,7 @@ export const StringComponent: FC = () => {
           onChange={(e) => setValue(e.currentTarget.value)}
         />
         <Button
+          id="stringButton"
           isLoader={isLoading}
           text="Развернуть"
           onClick={() => {
