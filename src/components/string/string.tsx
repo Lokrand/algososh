@@ -70,7 +70,7 @@ export const StringComponent: FC = () => {
           disabled={value === ""}
         />
       </div>
-      <div className={styles.circles}>
+      <div id="circles" className={styles.circles}>
         {isSorted &&
           arr.map((letter, i) => {
             return (

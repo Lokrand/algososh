@@ -25,19 +25,19 @@ export const MainPage: FC<MainPageProps> = ({ extraClass = "" }) => {
         <Link className={styles.link} to="/recursion" id="linkToString">
           <div className={`${styles.card} ${styles.string}`} />
         </Link>
-        <Link className={styles.link} to="/fibonacci">
+        <Link className={styles.link} to="/fibonacci" id="linkToFibonacci">
           <div className={`${styles.card} ${styles.fibonacci}`} />
         </Link>
-        <Link className={styles.link} to="/sorting">
+        <Link className={styles.link} to="/sorting" id="linkToSorting">
           <div className={`${styles.card} ${styles.arr}`} />
         </Link>
-        <Link className={styles.link} to="/stack">
+        <Link className={styles.link} to="/stack" id="linkToStack">
           <div className={`${styles.card} ${styles.stack}`} />
         </Link>
-        <Link className={styles.link} to="/queue">
+        <Link className={styles.link} to="/queue" id="linkToQueue">
           <div className={`${styles.card} ${styles.queue}`} />
         </Link>
-        <Link className={styles.link} to="/list">
+        <Link className={styles.link} to="/list" id="linkToList">
           <div className={`${styles.card} ${styles.list}`} />
         </Link>
       </div>
