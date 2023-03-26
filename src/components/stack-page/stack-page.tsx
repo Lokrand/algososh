@@ -60,6 +60,7 @@ export const StackPage: FC = () => {
           onChange={(e) => setValue(e.currentTarget.value)}
         />
         <Button
+          id="stack-add-el-button"
           text="Добавить"
           onClick={push}
           disabled={value === ""}
@@ -67,20 +68,22 @@ export const StackPage: FC = () => {
           isLoader={isAddEl}
         />
         <Button
+          id="stack-delete-one-el-button"
           text="Удалить"
           style={{ minWidth: "120px" }}
           onClick={pop}
           disabled={!stack || stack?.length === 0 || isAddEl}
           isLoader={removed}
-        />
+          />
         <Button
+          id="stack-clear-all-el-button"
           text="Очистить"
           onClick={clear}
           disabled={!stack || stack?.length === 0 || removed || isAddEl}
           style={{ minWidth: "120px", marginLeft: "60px" }}
         />
       </div>
-      <div className={styles.stack}>
+      <div className={styles.stack} id="stack-circles">
         {stack &&
           stack.map((el, index) => {
             if (length && index === length - 1) {

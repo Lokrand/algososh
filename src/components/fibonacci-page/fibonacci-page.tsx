@@ -8,7 +8,7 @@ import { delay } from "../../utils/delay";
 
 export const FibonacciPage: FC = () => {
   const [arr, setArr] = useState<number[]>([]);
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   const [active, setActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -41,6 +41,7 @@ export const FibonacciPage: FC = () => {
           disabled={isLoading}
         />
         <Button
+          id="fibonacci-button"
           isLoader={isLoading}
           disabled={value <= 1 || value > 19}
           text="Рассчитать"
@@ -50,7 +51,7 @@ export const FibonacciPage: FC = () => {
           style={{ minWidth: "180px" }}
         />
       </div>
-      <div className={styles.circles}>
+      <div className={styles.circles} id="fibonacci-circles">
         {active &&
           arr.map((el, index) => {
             return (

@@ -78,27 +78,27 @@ export const StringComponent: FC = () => {
             );
           })}
         {!isSorted &&
-          arr.map((el, index) => {
-            if (index === start || index === end) {
+          arr.map((el, i) => {
+            if (i === start || i === end) {
               return (
                 <Circle
-                  key={index}
+                  key={i}
                   letter={el}
                   state={ElementStates.Changing}
                 />
               );
             }
-            if (index < start || index > end) {
+            if (i < start || i > end) {
               return (
                 <Circle
-                  key={index}
+                  key={i}
                   letter={el}
                   state={ElementStates.Modified}
                 />
               );
-            } else if (index > start || index < end) {
+            } else if (i > start || i < end) {
               return (
-                <Circle key={index} letter={el} state={ElementStates.Default} />
+                <Circle key={i} letter={el} state={ElementStates.Default} />
               );
             }
           })}
