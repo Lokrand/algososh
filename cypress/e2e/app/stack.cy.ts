@@ -1,6 +1,5 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
-import { stylesChanging, stylesDefault } from "./app.cy";
-
+import { SHORT_DELAY_IN_MS, stylesChanging, stylesDefault } from "./app.cy";
 
 describe("Testing <<Stack>> page", function() {
   beforeEach(() => {
@@ -29,7 +28,7 @@ describe("Testing <<Stack>> page", function() {
         expect(el.children()[1]).to.have.css("border", stylesChanging);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#stack-circles")
       .children()
@@ -61,7 +60,7 @@ describe("Testing <<Stack>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesChanging);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#stack-circles")
       .children()

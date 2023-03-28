@@ -1,7 +1,5 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
-import { stylesChanging, stylesDefault } from "./app.cy";
-
-const noneBorder = "0px none rgb(41, 41, 41)";
+import { SHORT_DELAY_IN_MS, stylesChanging, stylesDefault } from "./app.cy";
 
 describe("Testing <<Queue>> page", function() {
   beforeEach(() => {
@@ -30,7 +28,7 @@ describe("Testing <<Queue>> page", function() {
         }
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#queue-circles")
       .children()
@@ -63,7 +61,7 @@ describe("Testing <<Queue>> page", function() {
           expect(el.children()[1]).to.have.css("border", stylesChanging);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#queue-circles")
       .children()
@@ -76,7 +74,7 @@ describe("Testing <<Queue>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesChanging);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#queue-circles")
       .children()
@@ -103,7 +101,7 @@ describe("Testing <<Queue>> page", function() {
     cy.get("input").type("owl");
     cy.get("#queue-add-el-button").click();
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
     cy.get("#queue-circles")
       .children()
       .should("have.length", 7)

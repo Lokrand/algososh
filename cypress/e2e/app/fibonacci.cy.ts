@@ -1,4 +1,6 @@
 /* eslint-disable cypress/no-unnecessary-waiting */
+import { SHORT_DELAY_IN_MS } from "./app.cy";
+
 const testNum = "8";
 
 describe("Testing <<Fibonacci>> page", function() {
@@ -23,7 +25,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 0) expect(el).contain(1);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -32,7 +34,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 1) expect(el).contain(1);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -42,7 +44,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 2) expect(el).contain(2);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -53,7 +55,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 3) expect(el).contain(3);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -65,7 +67,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 4) expect(el).contain(5);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -78,7 +80,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 5) expect(el).contain(8);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -92,7 +94,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 6) expect(el).contain(13);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
@@ -107,7 +109,7 @@ describe("Testing <<Fibonacci>> page", function() {
         if (i === 7) expect(el).contain(21);
       });
 
-    cy.wait(500);
+    cy.wait(SHORT_DELAY_IN_MS);
 
     cy.get("#fibonacci-circles")
       .children()
