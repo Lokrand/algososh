@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import { Button } from "./button";
 
-describe("test <Button /> component", () => {
+describe("Test <Button /> component", () => {
   it("Button render without text", () => {
     const tree = renderer.create(<Button />).toJSON();
     expect(tree).toMatchSnapshot();
