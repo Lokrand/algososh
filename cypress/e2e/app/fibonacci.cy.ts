@@ -17,7 +17,7 @@ describe("Testing <<Fibonacci>> page", function() {
     cy.get("#fibonacci-button")
       .should("not.be.disabled")
       .click();
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
 
     cy.get("#fibonacci-circles")
       .children()
@@ -128,7 +128,7 @@ describe("Testing <<Fibonacci>> page", function() {
     cy.get("#fibonacci-circles")
       .children()
       .should("have.length", 9);
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#fibonacci-button").should("not.be.disabled");
   });
 });

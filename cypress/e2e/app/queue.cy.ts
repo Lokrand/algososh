@@ -19,7 +19,7 @@ describe("Testing <<Queue>> page", function() {
       .should("not.be.disabled")
       .click();
     cy.get("input").should("be.empty");
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
     cy.get("#queue-circles")
       .children()
       .each((el, i) => {
@@ -39,7 +39,7 @@ describe("Testing <<Queue>> page", function() {
         }
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#queue-add-el-button").should("be.disabled");
     cy.get("#queue-delete-one-el-button").should("not.be.disabled");
     cy.get("#queue-clear-all-el-button").should("not.be.disabled");
@@ -50,7 +50,7 @@ describe("Testing <<Queue>> page", function() {
       .should("not.be.disabled")
       .click();
     cy.get("input").should("be.empty");
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
     cy.get("#queue-circles")
       .children()
       .each((el, i) => {
@@ -87,7 +87,7 @@ describe("Testing <<Queue>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesDefault);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#queue-add-el-button").should("be.disabled");
     cy.get("#queue-delete-one-el-button").should("not.be.disabled");
     cy.get("#queue-clear-all-el-button").should("not.be.disabled");

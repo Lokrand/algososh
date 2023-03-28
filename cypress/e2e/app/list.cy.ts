@@ -14,7 +14,14 @@ describe("Testing <<List>> page", function() {
     cy.get("#tail-remove").should("not.be.disabled");
     cy.get("#add-by-index").should("be.disabled");
     cy.get("#remove-by-index").should("be.disabled");
-    
   });
 
-})
+  it("should add element in head", function() {
+    cy.get("#list-input-string").type("cat1");
+    cy.get("#tail-add").should("not.be.disabled");
+    cy.get("#head-add").should("not.be.disabled").click();
+    cy.get("#spinner").should("exist");
+    
+
+  });
+});

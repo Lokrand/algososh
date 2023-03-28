@@ -33,7 +33,7 @@ exports[`Test <Button /> component Button with loading 1`] = `
   <img
     alt="Загрузка."
     className="loader_icon"
-    id="string-spinner"
+    id="spinner"
     src="loader.svg"
   />
 </button>

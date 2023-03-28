@@ -20,7 +20,7 @@ describe("Testing <<Stack>> page", function() {
       .should("not.be.disabled")
       .click();
     cy.get("input").should("be.empty");
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
     cy.get("#stack-circles")
       .children()
       .should("have.length", 1)
@@ -36,7 +36,7 @@ describe("Testing <<Stack>> page", function() {
         expect(el.children()[1]).to.have.css("border", stylesDefault);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#stack-add-el-button").should("be.disabled");
     cy.get("#stack-delete-one-el-button").should("not.be.disabled");
     cy.get("#stack-clear-all-el-button").should("not.be.disabled");
@@ -47,7 +47,7 @@ describe("Testing <<Stack>> page", function() {
       .should("not.be.disabled")
       .click();
     cy.get("input").should("be.empty");
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
     cy.get("#stack-circles")
       .children()
       .should("have.length", 2)
@@ -73,7 +73,7 @@ describe("Testing <<Stack>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesDefault);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#stack-add-el-button").should("be.disabled");
   });
   it("current remove el from stack", function() {

@@ -24,7 +24,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#stringButton")
       .should("not.be.disabled")
       .click();
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
 
     cy.get("#circles")
       .children()
@@ -206,7 +206,7 @@ describe("Testing <<String>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesModified);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#stringButton").should("not.be.disabled");
   });
 
@@ -215,7 +215,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#stringButton")
       .should("not.be.disabled")
       .click();
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
 
     cy.get("#circles")
       .children()
@@ -302,7 +302,7 @@ describe("Testing <<String>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesModified);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#stringButton").should("not.be.disabled");
   });
 
@@ -311,7 +311,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#stringButton")
       .should("not.be.disabled")
       .click();
-    cy.get("#string-spinner").should("exist");
+    cy.get("#spinner").should("exist");
 
     cy.get("#circles")
       .children()
@@ -343,7 +343,7 @@ describe("Testing <<String>> page", function() {
         expect(el.children()[1]).to.have.css("border", stylesModified);
       });
 
-    cy.get("#string-spinner").should("not.exist");
+    cy.get("#spinner").should("not.exist");
     cy.get("#stringButton").should("not.be.disabled");
   });
 });
