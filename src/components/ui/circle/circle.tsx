@@ -24,16 +24,19 @@ export const Circle: React.FC<CircleProps> = ({
 }) => {
   return (
     <div id="circle" className={`${styles.content} ${extraClass}`}>
-      <div
-        data-testid="head"
-        className={`text text_type_input text_color_input mb-4 ${
-          styles.absolute
-        } ${styles.head} ${
-          styles[typeof head === "string" ? "string" : "element"]
-        }`}
-      >
-        {head}
-      </div>
+      {head && (
+        <div
+          data-testid="head"
+          className={`text text_type_input text_color_input mb-4 ${
+            styles.absolute
+          } ${styles.head} ${
+            styles[typeof head === "string" ? "string" : "element"]
+          }`}
+        >
+          {head}
+        </div>
+      )}
+
       <div
         className={`${styles.circle}  ${isSmall ? styles.small : ""} ${
           styles[state]
@@ -50,16 +53,18 @@ export const Circle: React.FC<CircleProps> = ({
       >
         {index?.toString()}
       </p>
-      <div
-        data-testid="tail"
-        className={`text text_type_input text_color_input mt-4 ${
-          styles.absolute
-        } ${index?.toString() ? styles.tail60 : styles.tail30} ${
-          styles[typeof tail === "string" ? "string" : "element"]
-        }`}
-      >
-        {tail}
-      </div>
+      {tail && (
+        <div
+          data-testid="tail"
+          className={`text text_type_input text_color_input mt-4 ${
+            styles.absolute
+          } ${index?.toString() ? styles.tail60 : styles.tail30} ${
+            styles[typeof tail === "string" ? "string" : "element"]
+          }`}
+        >
+          {tail}
+        </div>
+      )}
     </div>
   );
 };
