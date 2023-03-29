@@ -281,7 +281,7 @@ export const ListPage: FC = () => {
           isLoader={removeIndex}
         />
       </div>
-      <div className={styles.list}>
+      <div className={styles.list} id="li">
         {list.map((el, index) => {
           if (onIndex) {
             return (
@@ -429,7 +429,7 @@ export const ListPage: FC = () => {
             );
           } else
             return (
-              <div className={styles.items} key={index} >
+              <div className={styles.items} key={index}>
                 <Circle letter={el} index={index} />
                 <ArrowIcon />
               </div>

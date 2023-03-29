@@ -5,7 +5,7 @@
 1. Локально открыть проект
 2. Установить зависимости - npm install
 3. Запустить проект - npm start
-4. Запуск cypress тестов - npm cypress open
+4. Запуск cypress тестов - npx cypress open
 5. Запуск snapshots - npm run test
 
 ## О проекте
