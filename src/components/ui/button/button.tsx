@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
       {...rest}
     >
       {isLoader ? (
-        <img className={styles.loader_icon} src={loaderIcon} alt="Загрузка." />
+        <img className={styles.loader_icon} id="spinner" src={loaderIcon} alt="Загрузка." />
       ) : (
         <>
           {sorting && currentIcon}

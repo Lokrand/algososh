@@ -187,6 +187,7 @@ export const ListPage: FC = () => {
     <SolutionLayout title="Связный список">
       <div className={styles.header}>
         <Input
+          id="list-input-string"
           maxLength={4}
           isLimitText={true}
           onChange={(e) => setTextInput(e.currentTarget.value)}
@@ -204,6 +205,7 @@ export const ListPage: FC = () => {
           }
         />
         <Button
+          id="head-add"
           text="Добавить в head"
           onClick={prepend}
           style={{ width: "170px" }}
@@ -211,6 +213,7 @@ export const ListPage: FC = () => {
           isLoader={changeHead && !removeHead}
         />
         <Button
+          id="tail-add"
           text="Добавить в tail"
           onClick={append}
           style={{ width: "170px" }}
@@ -218,6 +221,7 @@ export const ListPage: FC = () => {
           isLoader={changeTail && !removeTail}
         />
         <Button
+          id="head-remove"
           text="Удалить из head"
           onClick={handleDeleteHeadButtonClick}
           style={{ width: "170px" }}
@@ -227,6 +231,7 @@ export const ListPage: FC = () => {
           isLoader={removeHead}
         />
         <Button
+          id="tail-remove"
           text="Удалить из tail"
           onClick={handleDeleteTailButtonClick}
           style={{ width: "170px" }}
@@ -238,6 +243,7 @@ export const ListPage: FC = () => {
       </div>
       <div className={styles.header}>
         <Input
+          id="list-input-number"
           min={0}
           max={size}
           maxLength={2}
@@ -257,6 +263,7 @@ export const ListPage: FC = () => {
           }
         />
         <Button
+          id="add-by-index"
           text="Добавить по индексу"
           onClick={addElByIndex}
           style={{ width: "352px" }}
@@ -266,6 +273,7 @@ export const ListPage: FC = () => {
           isLoader={onIndex}
         />
         <Button
+          id="remove-by-index"
           text="Удалить по индексу"
           onClick={removeElByIndex}
           style={{ width: "352px" }}
@@ -273,11 +281,11 @@ export const ListPage: FC = () => {
           isLoader={removeIndex}
         />
       </div>
-      <div className={styles.list}>
+      <div className={styles.list} id="li">
         {list.map((el, index) => {
           if (onIndex) {
             return (
-              <div className={styles.items} key={index}>
+              <div className={styles.items} key={index} id="list-circles">
                 <Circle
                   letter={el}
                   index={index}
@@ -313,7 +321,7 @@ export const ListPage: FC = () => {
           }
           if (removeIndex) {
             return (
-              <div className={styles.items} key={index}>
+              <div className={styles.items} key={index} id="list-circles">
                 <Circle
                   letter={
                     index === +numberInput && counter === index ? undefined : el
@@ -345,7 +353,7 @@ export const ListPage: FC = () => {
           }
           if (index === 0 && list.length > 1) {
             return (
-              <div className={styles.items} key={index}>
+              <div className={styles.items} key={index} id="list-circles">
                 <Circle
                   letter={removeHead ? undefined : el}
                   index={index}
@@ -368,7 +376,7 @@ export const ListPage: FC = () => {
           }
           if (index === list.length - 1 && list.length > 1) {
             return (
-              <div className={styles.items} key={index}>
+              <div className={styles.items} key={index} id="list-circles">
                 <Circle
                   letter={removeTail ? undefined : el}
                   index={index}
@@ -390,7 +398,7 @@ export const ListPage: FC = () => {
           }
           if (list.length === 1) {
             return (
-              <div className={styles.items} key={index}>
+              <div className={styles.items} key={index} id="list-circles">
                 <Circle
                   letter={removeTail ? undefined : el}
                   index={index}

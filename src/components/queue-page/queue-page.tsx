@@ -75,6 +75,7 @@ export const QueuePage: FC = () => {
           }
         />
         <Button
+          id="queue-add-el-button"
           text="Добавить"
           onClick={enqueue}
           disabled={value === "" || ref.current?.tail === ref.current?.size}
@@ -85,6 +86,7 @@ export const QueuePage: FC = () => {
           }
         />
         <Button
+          id="queue-delete-one-el-button"
           text="Удалить"
           style={{ minWidth: "120px" }}
           onClick={dequeue}
@@ -95,8 +97,9 @@ export const QueuePage: FC = () => {
             borderColor === ElementStates.Changing
           }
           isLoader={borderColorOnHead === ElementStates.Changing}
-        />
+          />
         <Button
+          id="queue-clear-all-el-button"
           text="Очистить"
           onClick={clear}
           disabled={
@@ -108,7 +111,7 @@ export const QueuePage: FC = () => {
           style={{ minWidth: "120px", marginLeft: "80px" }}
         />
       </div>
-      <div className={styles.queue}>
+      <div className={styles.queue} id="queue-circles">
         {queue?.map((el, index) => {
           if (
             ref.current &&
