@@ -29,7 +29,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el, i) => {
-        expect(el.children()[1]).to.have.css("border", stylesDefault);
+        expect(el.children()).to.have.css("border", stylesDefault);
         expect(el).contain(evenStr[i]);
       });
     cy.wait(SHORT_DELAY_IN_MS);
@@ -38,22 +38,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 1)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 4)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 5)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -63,22 +63,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 1)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 4)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 5)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -88,22 +88,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[evenStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 4)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 5)
           expect(el).contain(evenStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -113,22 +113,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[evenStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 4)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 5)
           expect(el).contain(evenStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -138,22 +138,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[evenStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(evenStr[evenStr.length - 2]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 4)
           expect(el).contain(evenStr[1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 5)
           expect(el).contain(evenStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -163,22 +163,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[evenStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(evenStr[evenStr.length - 2]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 2)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 3)
           expect(el).contain(evenStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 4)
           expect(el).contain(evenStr[1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 5)
           expect(el).contain(evenStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -188,22 +188,22 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(evenStr[evenStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(evenStr[evenStr.length - 2]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 2)
           expect(el).contain(evenStr[evenStr.length - 3]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 3)
           expect(el).contain(evenStr[2]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 4)
           expect(el).contain(evenStr[1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 5)
           expect(el).contain(evenStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.get("#spinner").should("not.exist");
@@ -220,7 +220,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el, i) => {
-        expect(el.children()[1]).to.have.css("border", stylesDefault);
+        expect(el.children()).to.have.css("border", stylesDefault);
         expect(el).contain(OddStr[i]);
       });
     cy.wait(SHORT_DELAY_IN_MS);
@@ -229,13 +229,13 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 1)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 2)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -245,29 +245,13 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 1)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 2)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
-      });
-
-    cy.wait(SHORT_DELAY_IN_MS);
-
-    cy.get("#circles")
-      .children()
-      .each((el, i) => {
-        if (i === 0)
-          expect(el).contain(OddStr[OddStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
-        if (i === 1)
-          expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
-        if (i === 2)
-          expect(el).contain(OddStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -277,13 +261,13 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(OddStr[OddStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 2)
           expect(el).contain(OddStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -293,13 +277,29 @@ describe("Testing <<String>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain(OddStr[OddStr.length - 1]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
         if (i === 1)
           expect(el).contain(OddStr[i]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesChanging);
         if (i === 2)
           expect(el).contain(OddStr[0]) &&
-            expect(el.children()[1]).to.have.css("border", stylesModified);
+            expect(el.children()).to.have.css("border", stylesModified);
+      });
+
+    cy.wait(SHORT_DELAY_IN_MS);
+
+    cy.get("#circles")
+      .children()
+      .each((el, i) => {
+        if (i === 0)
+          expect(el).contain(OddStr[OddStr.length - 1]) &&
+            expect(el.children()).to.have.css("border", stylesModified);
+        if (i === 1)
+          expect(el).contain(OddStr[i]) &&
+            expect(el.children()).to.have.css("border", stylesModified);
+        if (i === 2)
+          expect(el).contain(OddStr[0]) &&
+            expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.get("#spinner").should("not.exist");
@@ -316,7 +316,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el) => {
-        expect(el.children()[1]).to.have.css("border", stylesDefault);
+        expect(el.children()).to.have.css("border", stylesDefault);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -324,7 +324,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el) => {
-        expect(el.children()[1]).to.have.css("border", stylesChanging);
+        expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -332,7 +332,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el) => {
-        expect(el.children()[1]).to.have.css("border", stylesChanging);
+        expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -340,7 +340,7 @@ describe("Testing <<String>> page", function() {
     cy.get("#circles")
       .children()
       .each((el) => {
-        expect(el.children()[1]).to.have.css("border", stylesModified);
+        expect(el.children()).to.have.css("border", stylesModified);
       });
 
     cy.get("#spinner").should("not.exist");

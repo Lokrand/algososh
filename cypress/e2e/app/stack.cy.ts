@@ -54,7 +54,7 @@ describe("Testing <<Stack>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain("dog") &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 1)
           expect(el).contain("cat") &&
             expect(el.children()[1]).to.have.css("border", stylesChanging);
@@ -67,7 +67,7 @@ describe("Testing <<Stack>> page", function() {
       .each((el, i) => {
         if (i === 0)
           expect(el).contain("dog") &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
         if (i === 1)
           expect(el).contain("cat") &&
             expect(el.children()[1]).to.have.css("border", stylesDefault);

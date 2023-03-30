@@ -24,7 +24,7 @@ describe("Testing <<Queue>> page", function() {
       .children()
       .each((el, i) => {
         if (i === 0) {
-          expect(el.children()[1]).to.have.css("border", stylesChanging);
+          expect(el.children()).to.have.css("border", stylesChanging);
         }
       });
 
@@ -58,7 +58,7 @@ describe("Testing <<Queue>> page", function() {
           expect(el).contain("dog") &&
             expect(el.children()[1]).to.have.css("border", stylesDefault);
         if (i === 1)
-          expect(el.children()[1]).to.have.css("border", stylesChanging);
+          expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -71,7 +71,7 @@ describe("Testing <<Queue>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesDefault);
         if (i === 1)
           expect(el).contain("cat") &&
-            expect(el.children()[1]).to.have.css("border", stylesChanging);
+            expect(el.children()).to.have.css("border", stylesChanging);
       });
 
     cy.wait(SHORT_DELAY_IN_MS);
@@ -84,7 +84,7 @@ describe("Testing <<Queue>> page", function() {
             expect(el.children()[1]).to.have.css("border", stylesDefault);
         if (i === 1)
           expect(el).contain("cat") &&
-            expect(el.children()[1]).to.have.css("border", stylesDefault);
+            expect(el.children()).to.have.css("border", stylesDefault);
       });
 
     cy.get("#spinner").should("not.exist");
