@@ -1,11 +1,4 @@
-import {
-  MutableRefObject,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  FC,
-} from "react";
+import { MutableRefObject, useRef, useState, FC } from "react";
 import { SolutionLayout } from "../ui/solution-layout/solution-layout";
 import styles from "./list-page.module.css";
 import { Input } from "../ui/input/input";
@@ -18,10 +11,18 @@ import { DELAY_IN_MS } from "../../constants/delays";
 import { delay } from "../../utils/delay";
 import { randomArr } from "../../utils/ramdomArr";
 
+const getRandomList = () => {
+  const list = new List<string>();
+  const arr = randomArr(4, true);
+  for (let i = 0; i < arr.length; i++) {
+    list.append(String(arr[i]));
+  }
+  return list;
+};
+
 export const ListPage: FC = () => {
   const [textInput, setTextInput] = useState("");
   const [numberInput, setNumberInput] = useState("");
-  const [list, setList] = useState<string[]>([]);
   const [removeHead, setRemoveHead] = useState(false);
   const [removeTail, setRemoveTail] = useState(false);
   const [removeIndex, setRemoveIndex] = useState(false);
@@ -32,8 +33,10 @@ export const ListPage: FC = () => {
   const [onIndex, setOnIndex] = useState(false);
   const [borderColorHead, setBorderColorHead] = useState(ElementStates.Default);
   const [borderColorTail, setBorderColorTail] = useState(ElementStates.Default);
-  const [size, setSize] = useState(0);
-  const ref = useRef() as MutableRefObject<List<string>>;
+
+  const ref = useRef(getRandomList()) as MutableRefObject<List<string>>;
+  const [list, setList] = useState<string[]>(ref.current.toArr());
+  const size = list.length;
 
   const changeColorHead = async () => {
     setBorderColorHead(ElementStates.Modified);
@@ -47,28 +50,6 @@ export const ListPage: FC = () => {
     setBorderColorTail(ElementStates.Default);
   };
 
-  useEffect(() => {
-    ref.current = new List<string>();
-    const arrInit = randomArr(4, true);
-    for (let i = 0; i < arrInit.length; i++) {
-      ref.current.append(String(arrInit[i]));
-    }
-    const list = ref.current.toArr();
-    const arr: string[] = [];
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
-  }, []);
-
-  useMemo(() => {
-    if (ref.current) {
-      const length = ref.current.getSize();
-      setSize(length);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ref.current?.getSize()]);
-
   const append = async () => {
     setChangeTail(true);
     if (size === 0) setList([""]);
@@ -76,11 +57,7 @@ export const ListPage: FC = () => {
     setChangeTail(false);
     ref.current?.append(textInput);
     const list = ref.current?.toArr();
-    const arr: string[] = [];
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
+    setList(list);
     setTextInput("");
     setNumberInput("");
     changeColorTail();
@@ -93,11 +70,7 @@ export const ListPage: FC = () => {
     setChangeHead(false);
     ref.current?.prepend(textInput);
     const list = ref.current?.toArr();
-    const arr: string[] = [];
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
+    setList(list);
     setTextInput("");
     setNumberInput("");
     changeColorHead();
@@ -108,12 +81,8 @@ export const ListPage: FC = () => {
     setRemoveTail(true);
     ref.current?.removeTail();
     const list = ref.current?.toArr();
-    const arr: string[] = [];
     await delay(DELAY_IN_MS);
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
+    setList(list);
     setRemoveTail(false);
     setChangeTail(false);
   };
@@ -123,59 +92,46 @@ export const ListPage: FC = () => {
     setRemoveHead(true);
     ref.current?.removeHead();
     const list = ref.current?.toArr();
-    const arr: string[] = [];
     await delay(DELAY_IN_MS);
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
+    setList(list);
     setRemoveHead(false);
     setChangeHead(false);
   };
 
-  const showResult = async () => {
+  const showResult = async (index: number) => {
     let counter = -1;
-    while (counter < +numberInput) {
+    while (counter < index) {
       await delay(DELAY_IN_MS);
       counter++;
       setCounter(counter);
     }
+    // await delay(DELAY_IN_MS);
   };
-
+  
   const removeElByIndex = async () => {
-    showResult();
     setRemoveIndex(true);
-    const arr: string[] = [];
-    await new Promise((resolve) =>
-      setTimeout(resolve, (+numberInput + 2) * DELAY_IN_MS)
-    );
+    await showResult(+numberInput);
+    await delay(DELAY_IN_MS);
     ref.current?.removeElByIndex(+numberInput);
     const list = ref.current?.toArr();
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setList(arr);
-    }
+    setList(list);
     setRemoveIndex(false);
     setCounter(-1);
     setNumberInput("");
     setTextInput("");
   };
-
+  
   const addElByIndex = async () => {
-    showResult();
+    showResult(+numberInput);
     setIsAddByIndex(true);
     setOnIndex(true);
-    const arr: string[] = [];
     await new Promise((resolve) =>
       setTimeout(resolve, (+numberInput + 1) * DELAY_IN_MS)
     );
     ref.current?.addElByIndex(textInput, +numberInput);
     const list = ref.current?.toArr();
-    if (list) {
-      list.forEach((el) => arr.push(el.value));
-      setIsAddByIndex(false);
-      setList(arr);
-    }
+    setList(list);
+    setIsAddByIndex(false);
     await delay(DELAY_IN_MS);
     setNumberInput("");
     setTextInput("");
@@ -285,7 +241,7 @@ export const ListPage: FC = () => {
         {list.map((el, index) => {
           if (onIndex) {
             return (
-              <div className={styles.items} key={index} id="list-circles">
+              <div className={styles.items} key={index}>
                 <Circle
                   letter={el}
                   index={index}
@@ -321,7 +277,7 @@ export const ListPage: FC = () => {
           }
           if (removeIndex) {
             return (
-              <div className={styles.items} key={index} id="list-circles">
+              <div className={styles.items} key={index}>
                 <Circle
                   letter={
                     index === +numberInput && counter === index ? undefined : el
@@ -351,36 +307,19 @@ export const ListPage: FC = () => {
               </div>
             );
           }
-          if (index === 0 && list.length > 1) {
-            return (
-              <div className={styles.items} key={index} id="list-circles">
-                <Circle
-                  letter={removeHead ? undefined : el}
-                  index={index}
-                  head={
-                    changeHead ? (
-                      <Circle
-                        isSmall={true}
-                        letter={removeHead ? el : textInput}
-                        state={ElementStates.Changing}
-                      />
-                    ) : (
-                      "head"
-                    )
-                  }
-                  state={borderColorHead}
-                />
-                {list.length > 1 && <ArrowIcon />}
-              </div>
-            );
-          }
-          if (index === list.length - 1 && list.length > 1) {
-            return (
-              <div className={styles.items} key={index} id="list-circles">
-                <Circle
-                  letter={removeTail ? undefined : el}
-                  index={index}
-                  tail={
+          const isHead = index === 0;
+          const isTail = index === list.length - 1;
+          return (
+            <div className={styles.items} key={index}>
+              <Circle
+                letter={
+                  (removeHead && isHead) || (removeTail && isTail)
+                    ? undefined
+                    : el
+                }
+                index={index}
+                tail={
+                  isTail ? (
                     changeTail ? (
                       <Circle
                         isSmall={true}
@@ -390,19 +329,10 @@ export const ListPage: FC = () => {
                     ) : (
                       "tail"
                     )
-                  }
-                  state={borderColorTail}
-                />
-              </div>
-            );
-          }
-          if (list.length === 1) {
-            return (
-              <div className={styles.items} key={index} id="list-circles">
-                <Circle
-                  letter={removeTail ? undefined : el}
-                  index={index}
-                  head={
+                  ) : null
+                }
+                head={
+                  isHead ? (
                     changeHead ? (
                       <Circle
                         isSmall={true}
@@ -412,28 +342,19 @@ export const ListPage: FC = () => {
                     ) : (
                       "head"
                     )
-                  }
-                  tail={
-                    changeTail ? (
-                      <Circle
-                        isSmall={true}
-                        letter={removeTail ? el : textInput}
-                        state={ElementStates.Changing}
-                      />
-                    ) : (
-                      "tail"
-                    )
-                  }
-                />
-              </div>
-            );
-          } else
-            return (
-              <div className={styles.items} key={index}>
-                <Circle letter={el} index={index} />
-                <ArrowIcon />
-              </div>
-            );
+                  ) : null
+                }
+                state={
+                  isHead
+                    ? borderColorHead
+                    : isTail
+                    ? borderColorTail
+                    : undefined
+                }
+              />
+              {list.length > 1 && !isTail && <ArrowIcon />}
+            </div>
+          );
         })}
       </div>
     </SolutionLayout>

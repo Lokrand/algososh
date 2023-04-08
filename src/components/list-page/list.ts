@@ -117,14 +117,14 @@ export class List<T> implements IList<T> {
     this.size--;
   }
 
-  toArr() {
-    const nodes = [];
+  toArr():T[] {
+    const items:T[] = [];
     let current = this.head;
     while (current) {
-      nodes.push(current);
+      items.push(current.value);
       current = current.next;
     }
-    return nodes;
+    return items;
   }
 
   getSize() {
